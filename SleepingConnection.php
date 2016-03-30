@@ -12,15 +12,14 @@
 class SleepingConnection
 {
 	/**
-	 * 
-	 * @var 	string localhost
-	 * @var		string $user
-	 * @var		string $pass
-	 * @var		string $dbname
-	 * 
-	 * 
+	 * @var string	$user
 	 */
 	private $user = 'root';
+	
+	/**
+	 * 
+	 *@var	string	$pass
+	 */
 	private $pass = '';
 	
 	
@@ -136,14 +135,13 @@ class SleepingConnection
 	$slpConnection->createConnection($rows);
 	var_dump($rows);
  tova doide ot tova
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
- */
+	/**
+	 * 
+	 * @var 	string localhost
+	 * @var		string $user
+	 * @var		string $pass
+	 * @var		string $dbname
+	 * 
+	 * 
+	 */
+?>

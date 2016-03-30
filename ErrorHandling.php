@@ -1,13 +1,27 @@
 <?php 
 
-
+/**
+ * @brief 		class that we chech pdo::errors handling; 
+ * 
+ * @details 	ew doing exam after 
+ * 
+ *
+ */
 class ErrorHandling
 {
-	
+	/**
+	 * 
+	 * @var string $user
+	 * @var	string $pass
+	 */
 	private $user = 'root';
 	private $pass = '';
 	
-	
+	/**
+	 * @brief function set error, it works we make connection;
+	 * 
+	 * @details	we made the connectin and than set attr_errmode and 
+	 */
 	public function setError()
 	{
 		

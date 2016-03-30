@@ -10,14 +10,17 @@
  */
 class beginTransaction
 {
+	
 	/**
-	 * @var 	string localhost
-	 * @var		string $user
-	 * @var		string $pass
-	 * @var		string $dbname
 	 * 
+	 * @var string $user
 	 */
 	private $user = "root";
+	
+	/**
+	 * 
+	 * @var string $pass
+	 */
 	private $pass = "";
 	//const PASSWRD			= "";
 	//const USERNAME		= "root";

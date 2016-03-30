@@ -1,23 +1,47 @@
-
 <?php 
 
+/**
+ * 
+ * @brief	Class that create database using singleton with static properties;
+ *
+ */
 class Database
 {
+	/**
+	 * 
+	 * @var const SERVERNAME
+	 */
 	const SERVERNAME		= 'localhost';
+	
+	/**
+	 * @var	string PASSWORD
+	 */
 	const PASSWORD			= "";
+	
+	/**
+	 * @var	string USERNAME
+	 */
 	const USERNAME			= "root";
+	
+	/**
+	 * @var	string DB_NAME
+	 */
 	const DB_NAME			= "electromer";
 	
+	/**
+	 * @var	Database $instance
+	 */
 	private static $instance;
 	
+	/**
+	 * @var	\PDO $connection
+	 */
 	private $connection;
 	
 	/**
-	 * konstruktorut go vzehme ot documentaciyata... tryaba da bude private po default
-	 * kakvo prati tuk, pravi edin obekt, koyto polzva stati4ni propertita na clasa; Zashto stati4ni, 
-	 * zashtoto sa validni za klasa, no ne i za obekta, oshte nyama obekt
-	 * pravim obekta
-	 * 
+	 * @brief 	We create connection with constructor that is coming from the pdo; it works as creating object that possess the connection;
+	 * 			Using static properties, because we can't make object from that instance but they are valid for the static class; 
+	 *
 	 */
 	private function __construct()
 	{	
@@ -28,11 +52,8 @@ class Database
 		);
 	}
 	/**
-	 * tazi functiya pravi ve4e malkiyt obekt database, kato vzima stati4nite propertitata na klasa
-	 * shtom vikame stati4ni propertita izpolzvame self:: i pravim parametara $instance; zatova $instance
-	 * e podadohme kato private static/ kogato s metoda getDatabase e suzdadem
-	 * moe vrusjta,e rezultat = edna bazadanni, koyto e ot clasa
-	 * vednaga sled tova suzdavame vtora baza, danni, koyato ni izvlicha dannite ot istinskata baza danni
+	 * 
+	 * @brief	this function create the database it works with pdo; return $instance;
 	 * 
 	 * @return Database
 	 */
@@ -43,34 +64,32 @@ class Database
 			self::$instance = new self();
 		}
 		return self::$instance;
+		/* tazi functiya pravi ve4e malkiyt obekt database, kato vzima stati4nite propertitata na klasa
+	 	* shtom vikame stati4ni propertita izpolzvame self:: i pravim parametara $instance; zatova $instance
+	 	* e podadohme kato private static/ kogato s metoda getDatabase e suzdadem
+	 	* moe vrusjta,e rezultat = edna bazadanni, koyto e ot clasa
+	 	* vednaga sled tova suzdavame vtora baza, danni, koyato ni izvlicha dannite ot istinskata baza danni
+		*/
+	
 	}
 	
 	/**
-	 * s tazi functiya v momenta izvlichame dannite ot istinskata baza danni. kak stava tova,
-	 * stava s $this->connection; 
+	 * @brief	function that we take the information from the database
+	 *     
 	 * @return PDO
-	 */	public function getConnnection()
+	 * 
+	 */
+	
+	public function getConnnection()
 	{
 		return $this->connection;
 	}
 	
 	/**
-	 * i nakraya obedinyavame bazata danni, kakto i tryabva da izkarame resultata. tova stava, 
-	 * izkarvame STATEMENT, koyto shte bude izkaran vuv formata na masiv. Purvo podavame parametrite
-	 * $sql, sled tova arguments=array()
-	 * ve4e tuk $conection e subrana ot dvete instancii, bazata ot stati4nite propertita na clasa, getDatabase()metod
-	 * i samata vryzka s istinskata baza danni getConnection(); za da izprinti dannite
-	 * minavame na nova taktika:
-	 * $connection = $connection = self::getDatabase(), tuk razli4noto e self::stati4nite propertita
-	 * na getDatabase()->getConnection()
-	 * i podavame............ STATEMENT = $connection->(podgotvi $sql ) 
-	 * $resultat = STATEMENT->EXECUTE ($ARGUMENTS...kato drugata tunkost, che argumentite gi vzima ot 
-	 * primary key=a); .. taka nakraya ako napravi rezultat.... natatuk lesno.
-	 * FETCHALL - PLJUE resultata, kato imashe 20 vida na4ini ot documentaciyata kak to4no da stane.
-	 * ... s dve dumi.... stati4ni propertita za bazata danni, za da napravi baza danni kato obekt
-	 * edna connectiya za da napylni tozi obekt!! i nakraya da printi! taka lesno!
-	 * @param unknown $sql
-	 * @param array $arguments
+	 * @brief	create the database 
+	 * 
+	 * @return	array;
+	 * 
 	 */
 	public function getResults( $sql, $arguments = array() )
 	{
@@ -126,9 +145,7 @@ var_dump($rows);die();
 // 		}
 		
 	/////////////////////////////////////////////////////
-	
 		
-			
 // 	$servername = "localhost";
 // 	$username   = "root";
 // 	$password   = "";
@@ -147,5 +164,23 @@ var_dump($rows);die();
 // 	}
 
 // $connection = null;
-
+/**
+*
+*
+* i nakraya obedinyavame bazata danni, kakto i tryabva da izkarame resultata. tova stava,
+* izkarvame STATEMENT, koyto shte bude izkaran vuv formata na masiv. Purvo podavame parametrite
+* $sql, sled tova arguments=array()
+* ve4e tuk $conection e subrana ot dvete instancii, bazata ot stati4nite propertita na clasa, getDatabase()metod
+* i samata vryzka s istinskata baza danni getConnection(); za da izprinti dannite
+* minavame na nova taktika:
+* $connection = $connection = self::getDatabase(), tuk razli4noto e self::stati4nite propertita
+* na getDatabase()->getConnection()
+* i podavame............ STATEMENT = $connection->(podgotvi $sql )
+* $resultat = STATEMENT->EXECUTE ($ARGUMENTS...kato drugata tunkost, che argumentite gi vzima ot
+*	 * primary key=a); .. taka nakraya ako napravi rezultat.... natatuk lesno.
+*	 * FETCHALL - PLJUE resultata, kato imashe 20 vida na4ini ot documentaciyata kak to4no da stane.
+*	 * ... s dve dumi.... stati4ni propertita za bazata danni, za da napravi baza danni kato obekt
+*	 * edna connectiya za da napylni tozi obekt!! i nakraya da printi! taka lesno! * @param	string $sql* @param	array $arguments
+* 
+*/
 ?>

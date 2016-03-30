@@ -8,7 +8,7 @@ include_once 'DatabaseSingleton.php';
  * 	
  * @param	@database;			
  *
- */
+ */	
 class DatabaseSingletonContinue
 {
 	
@@ -23,7 +23,7 @@ class DatabaseSingletonContinue
 	 */
 	public function __construct()
 	{	
-	$this->database = DatabaseSingleton::getInstance();//connection made!
+		$this->database = DatabaseSingleton::getInstance();//connection made!
 	}
 	
 	
@@ -61,16 +61,22 @@ class DatabaseSingletonContinue
 		//	$sql	= 'SELECT * FROM users';
 	}
 	
+	/**
+	 * 
+	 * @param unknown $result
+	 * @return number
+	 */
+	  
 	function getPDOConstantType( $result )
 	{
 		if( is_int( $result ) )
 			return pdo::PARAM_INT;
-			if( is_bool( $result ) )
-				return pdo::PARAM_BOOL;
-				if ( is_null( $result ) )
-					return pdo::PARAM_NULL;
+		if( is_bool( $result ) )
+			return pdo::PARAM_BOOL;
+		if ( is_null( $result ) )
+			return pdo::PARAM_NULL;
 	
-					return pdo::PARAM_STR;
+		return pdo::PARAM_STR;
 	
 	}
 
@@ -89,7 +95,7 @@ class DatabaseSingletonContinue
 	//$user->getMeDatas( $result );
 	
 	//$alldatas = ($this->database)->getMeDatas( $sql, $arguments );
-	//$user->getMeDatas( $alldatas ); */
+	//$user->getMeDatas( $alldatas ); 
 ////////////////////////////////////////////////////////////////////////////////
 //$user = new DatabaseSingletonContinue();
 //$user->getMeDatas( $sql );

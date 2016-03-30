@@ -1,7 +1,7 @@
   <?php
   
   /**
-   * combining all the function for PDO:
+   * @brief 	combining all the function for PDO:
    * 
    * @author Me;
    *
@@ -9,12 +9,29 @@
 
 class JustText
 {
+	/**
+	 * 
+	 * @var string root
+	 * @var string pass
+	 */
  	private $user = 'root';
  	private $pass = '';
   
- 	
+ 	/**
+ 	 * @brief This function is rading the datas''
+ 	 * 
+ 	 * @details it works with connection, intersection, cry/catch scenario;
+ 	 * 
+ 	 */
 	function readData()
 	{
+		/**
+		 * @param	boolean 	$dbh
+		 * @param	string		$this->user
+		 * @param	string		$sql
+		 * 		
+		 * @return  string 		$stmt
+		 */
 		$dbh = new PDO( 'mysql:host=localhost;dbname=electromer;',
 		$this->user, $this->pass );//$user, $pass)
 	
@@ -50,8 +67,21 @@ class JustText
   		}
 	}
 	
+	/**
+	 * @brief	function that is selecting statement from the database;
+	 * 
+	 * @details	works with pdo
+	 * 
+	 * @return	string $result;
+	 *
+	 */
   function readDataNext()
   {
+  	/**
+  	 * 
+  	 * @return string $result;
+  	 * 
+  	 */
   	$dbh = new PDO( 'mysql:host=localhost;dbname=electromer;',
   			$this->user, $this->pass );//$user, $pass)
   
@@ -73,6 +103,11 @@ class JustText
   	 */
   	public function fetchAll()
   	{
+  		/**
+  		 * @brief 	query that is made; ;
+  		 * 
+  		 * @details	
+  		 */
   		try{
   			
 	  		$sql =  'SELECT * FROM users';
