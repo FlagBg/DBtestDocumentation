@@ -47,7 +47,7 @@ class Connection
 	
 		{
 		print "Error!: " . $e->getMessage() . " ";
-		die();
+		//die();
 		}
 	}
 
